@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloapi
+  namespace: demo
+  labels:
+     app: helloapi
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: helloapi
+  template:
+    metadata:
+      labels:
+        app: helloapi
+    spec:
+      containers:
+      - name: helloapi
+        image: localhost:5001/helloapi:v0.0.1
+        ports:
+        - containerPort: 8080

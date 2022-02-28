@@ -1,0 +1,22 @@
+apiVersion: flagger.app/v1beta1
+kind: Canary
+metadata:
+  name: helloapi
+  namespace: demo
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: helloapi
+  service:
+    port: 80
+    targetPort: 8080
+    gateways:
+    - helloapi-gateway
+    hosts:
+     - "*"
+  analysis:
+    interval: 10s
+    threshold: 5
+    maxWeight: 50
+    stepWeight: 25
