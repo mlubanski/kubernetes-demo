@@ -10,11 +10,11 @@ public class Hello {
 
 	@GetMapping("/hello")
 	public String greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
-		return "Hello " + name;
+		return "Hello v2 " + name;
 	}
 	
 	@GetMapping("/")
 	public String greeting() {
-		return "OK";
+		return "OK v2";
 	}
 }
